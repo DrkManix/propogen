@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+				<meta charset="utf-8">
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Protest Poster Generator</title>
+	            <link rel="stylesheet" href="style.css">
+</head>
+	
+	
+	
+	
+	
+
+<body>
+
+
+	
+    <div id="tete">
+   
+    <h1 id="titre">PROTEST POSTER GENERATOR</h1>
+<p id="texte">Le générateur d'affiches de protestation est un outil à disposition de toute personne ou organisme souhaitant rapidement et de manière effective créer et imprimer une affiche sobre avec des informations correctement hiérarchisée pour une meilleur lisibilité.
+</br></br>
+Saisissez vos informations (sur la droite, à la place des données d'exemple) pour générer votre affiche. Aucune donnée n'est sauvegardée sur le site.
+</p>
+	
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>	
+<script type="text/javascript" src="html2canvas.js"></script>	
+
+<style type="text/css" media="print" id="print"></style>
+<button class="red">GO</button>
+
+</div>
+	
+<!-- champs de saisis -->
+
+	<div id="affiche">
+    <textarea type="text" value="Entrer les participants ici" id="participants">Entrer les participants ici</textarea>
+    <textarea type="text" value="Entrer la date ici" id="date">Entrer la date ici</textarea>
+    <textarea type="text" value="Entrer le lieu ici" id="lieu">Entrer le lieu ici</textarea>
+ 	<textarea type="text" value="Entrer le nom de l'évenement ici" id="titreaf">Entrer le nom de l'évenement ici</textarea>  
+    <textarea type="text" value="Entrer un sous-titre ici" id="stitre">Entrer un sous-titre ici</textarea>
+ 	<textarea type="text" value="Entrer une description ici" id="description">Entrer une description ici</textarea>
+ 	<textarea type="text" value="Entrer les contact/réseaux sociaux ici" id="contact">Entrer les contact/réseaux sociaux ici</textarea> 
+    
+    
+    
+  
+    
+
+</div>
+
+<div id="controlers">
+<!-- controlleurs -->
+
+<div id="controlfont">
+<p>choisir la font</p>
+<select id="fontselect" onchange="fontgeneral()">
+<option  value="Quantico">font Quantico</option>
+<option value="Combat">font Combat</option>
+<option  value="Steps">font Steps</option>
+</select>
+</div>
+
+
+<script>
+function fontgeneral(){	
+	var font = document.getElementById("fontselect").value;
+	
+
+	
+	if (font == "Quantico") {
+		
+		  	 $("#participants").css("font-family", "Quantico"); 
+			 $("#date").css("font-family", "Quantico"); 
+			 $("#lieu").css("font-family", "Quantico");
+			 $("#titreaf").css("font-family", "Quantico");
+			 $("#stitre").css("font-family", "Quantico");
+			 $("#description").css("font-family", "Quantico");
+			 $("#contact").css("font-family", "Quantico");
+			 }
+	if (font == "Combat") {  	
+	
+			 $("#participants").css("font-family", "Combat"); 
+			 $("#date").css("font-family", "Combat"); 
+			 $("#lieu").css("font-family", "Combat");
+			 $("#titreaf").css("font-family", "Combat");
+			 $("#stitre").css("font-family", "Combat");
+			 $("#description").css("font-family", "Combat");
+			 $("#contact").css("font-family", "Combat");
+			
+			 }
+	if (font == "Steps") {  	 
+	
+			$("#participants").css("font-family", "Steps"); 
+			 $("#date").css("font-family", "Steps"); 
+			 $("#lieu").css("font-family", "Steps");
+			 $("#titreaf").css("font-family", "Steps");
+			 $("#stitre").css("font-family", "Steps");
+			 $("#description").css("font-family", "Steps");
+			 $("#contact").css("font-family", "Steps");
+			}	
+}
+</script>
+
+<div id="controlevent">
+<p>nom de l'évenement</p>
+
+<select id="nomselect" onchange="typo()">
+<option  value="regular">regular</option>
+<option value="bold">bold</option>
+<option  value="italic">italic</option>
+</select>
+
+<script>
+function typo(){	
+	var typo = document.getElementById("nomselect").value;
+	
+	
+	
+	if (typo == "bold") {  	 $("#titreaf").css("font-weight", "bold"); }
+	if (typo == "regular") {  	 $("#titreaf").css("font-style", "normal"); }
+	if (typo == "italic") {  	 $("#titreaf").css("font-style", "italic"); }	
+}
+</script>
+
+<select id="nomselectcol" onchange="Ncolor()">
+<option  value="red">txt red</option>
+<option value="black">txt black</option>
+<option  value="yellow">txt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+
+
+<script>
+function Ncolor(){
+	
+	var color = document.getElementById("nomselectcol").value;
+	console.log("io");
+	
+	if (color == "black") {  	 $("#titreaf").css("color", "black"); }
+	if (color == "red") {  	 $("#titreaf").css("color", "red"); }
+	if (color == "yellow") {  	 $("#titreaf").css("color", "yellow"); }
+	if (color == "white") {  	 $("#titreaf").css("color", "white"); }
+	
+}
+
+</script>
+
+<select id="nomselectbg" onchange="Nbackground()">
+<option  value="red">bgtxt red</option>
+<option value="black">bgtxt black</option>
+<option  value="yellow">bgtxt yellow</option>
+<option value="white">bgtxt white</option>
+</select>
+
+
+
+<script>
+function Nbackground(){
+	
+	var bgcolor = document.getElementById("nomselectbg").value;
+	console.log("io");
+	
+	if (bgcolor == "black") {  	 $("#titreaf").css("background-color", "black"); }
+	if (bgcolor == "red") {  	 $("#titreaf").css("background-color", "red"); }
+	if (bgcolor == "yellow") {  	 $("#titreaf").css("background-color", "yellow"); }
+	if (bgcolor == "white") {  	 $("#titreaf").css("background-color", "white"); }
+	
+}
+
+</script>
+
+</div>
+
+<div id="controldate">
+<p>date</p>
+
+<select id="dateselect" onchange="datestyle()">
+<option  value="regular">regular</option>
+<option value="bold">bold</option>
+<option  value="italic">italic</option>
+</select>
+
+<script>
+function datestyle(){	
+	var datypo = document.getElementById("dateselect").value;
+	
+	
+	
+	if (datypo == "bold") {  	 $("#date").css("font-weight", "bold"); }
+	if (datypo == "regular") {  	 $("#date").css("font-style", "normal"); }
+	if (datypo == "italic") {  	 $("#date").css("font-style", "italic"); }	
+}
+</script>
+
+<select id="dateselectcol" onchange="datecolor()">
+<option  value="red">txt red</option>
+<option value="black">txt black</option>
+<option  value="yellow">txt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+<script>
+function datecolor(){
+	
+	var dcolor = document.getElementById("dateselectcol").value;
+	console.log("io");
+	
+	if (dcolor == "black") {  	 $("#date").css("color", "black"); }
+	if (dcolor == "red") {  	 $("#date").css("color", "red"); }
+	if (dcolor == "yellow") {  	 $("#date").css("color", "yellow"); }
+	if (dcolor == "white") {  	 $("#date").css("color", "white"); }
+	
+}
+
+</script>
+
+<select id="dateselectbg" onchange="datebackground()">
+<option  value="red">bgtxt red</option>
+<option value="black">bgtxt black</option>
+<option  value="yellow">bgtxt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+<script>
+function datebackground(){
+	
+	var dbgcolor = document.getElementById("dateselectbg").value;
+	console.log("io");
+	
+	if (dbgcolor == "black") {  	 $("#date").css("background-color", "black"); }
+	if (dbgcolor == "red") {  	 $("#date").css("background-color", "red"); }
+	if (dbgcolor == "yellow") {  	 $("#date").css("background-color", "yellow"); }
+	if (dbgcolor == "white") {  	 $("#date").css("background-color", "white"); }
+	
+}
+
+</script>
+
+</div>
+
+<div id="controllieu">
+<p>lieu</p>
+
+<select id="lieuselect" onchange="lieustyle()">
+<option  value="regular">regular</option>
+<option value="bold">bold</option>
+<option  value="italic">italic</option>
+</select>
+
+<script>
+function lieustyle(){	
+	var litypo = document.getElementById("lieuselect").value;
+	
+	
+	
+	if (litypo == "bold") {  	 $("#lieu").css("font-weight", "bold"); }
+	if (litypo == "regular") {  	 $("#lieu").css("font-style", "normal"); }
+	if (litypo == "italic") {  	 $("#lieu").css("font-style", "italic"); }	
+}
+</script>
+
+<select id="lieuselectcol" onchange="lieucolor()">
+<option  value="red">txt red</option>
+<option value="black">txt black</option>
+<option  value="yellow">txt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+<script>
+function lieucolor(){
+	
+	var licolor = document.getElementById("lieuselectcol").value;
+	console.log("io");
+	
+	if (licolor == "black") {  	 $("#lieu").css("color", "black"); }
+	if (licolor == "red") {  	 $("#lieu").css("color", "red"); }
+	if (licolor == "yellow") {  	 $("#lieu").css("color", "yellow"); }
+	if (licolor == "white") {  	 $("#lieu").css("color", "white"); }
+	
+}
+
+</script>
+
+<select id="lieuselectbg" onchange="lieubackground()">
+<option  value="red">bgtxt red</option>
+<option value="black">bgtxt black</option>
+<option  value="yellow">bgtxt yellow</option>
+<option value="white">bgtxt white</option>
+</select>
+
+<script>
+function lieubackground(){
+	
+	var libgcolor = document.getElementById("lieuselectbg").value;
+	console.log("io");
+	
+	if (libgcolor == "black") {  	 $("#lieu").css("background-color", "black"); }
+	if (libgcolor == "red") {  	 $("#lieu").css("background-color", "red"); }
+	if (libgcolor == "yellow") {  	 $("#lieu").css("background-color", "yellow"); }
+	if (libgcolor == "white") {  	 $("#lieu").css("background-color", "white"); }
+	
+}
+
+</script>
+
+</div>
+
+<div id="controlstitre">
+<p>sous-titre</p>
+
+<select id="stitreselect" onchange="stitrestyle()">
+<option  value="regular">regular</option>
+<option value="bold">bold</option>
+<option  value="italic">italic</option>
+</select>
+
+<script>
+function stitrestyle(){	
+	var sttypo = document.getElementById("stitreselect").value;
+	
+	
+	
+	if (sttypo == "bold") {  	 $("#stitre").css("font-weight", "bold"); }
+	if (sttypo == "regular") {  	 $("#stitre").css("font-style", "normal"); }
+	if (sttypo == "italic") {  	 $("#stitre").css("font-style", "italic"); }	
+}
+</script>
+
+<select id="stitreselectcol" onchange="stitrecolor()">
+<option  value="red">txt red</option>
+<option value="black">txt black</option>
+<option  value="yellow">txt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+<script>
+function stitrecolor(){
+	
+	var stcolor = document.getElementById("stitreselectcol").value;
+	console.log("io");
+	
+	if (stcolor == "black") {  	 $("#stitre").css("color", "black"); }
+	if (stcolor == "red") {  	 $("#stitre").css("color", "red"); }
+	if (stcolor == "yellow") {  	 $("#stitre").css("color", "yellow"); }
+	if (stcolor == "white") {  	 $("#stitre").css("color", "white"); }
+	
+}
+
+</script>
+
+<select id="stitreselectbg" onchange="stitrebackground()">
+<option  value="red">bgtxt red</option>
+<option value="black">bgtxt black</option>
+<option  value="yellow">bgtxt yellow</option>
+<option value="white">bgtxt white</option>
+</select>
+</div>
+
+<script>
+function stitrebackground(){
+	
+	var stbgcolor = document.getElementById("stitreselectbg").value;
+	console.log("io");
+	
+	if (stbgcolor == "black") {  	 $("#stitre").css("background-color", "black"); }
+	if (stbgcolor == "red") {  	 $("#stitre").css("background-color", "red"); }
+	if (stbgcolor == "yellow") {  	 $("#stitre").css("background-color", "yellow"); }
+	if (stbgcolor == "white") {  	 $("#stitre").css("background-color", "white"); }
+	
+}
+
+</script>
+
+<div id="controldescription">
+<p>description</p>
+
+<select id="descriptionselect" onchange="descriptionstyle()">
+<option  value="regular">regular</option>
+<option value="bold">bold</option>
+<option  value="italic">italic</option>
+</select>
+
+<script>
+function descriptionstyle(){	
+	var descrtypo = document.getElementById("descriptionselect").value;
+	
+	
+	
+	if (descrtypo == "bold") {  	 $("#description").css("font-weight", "bold"); }
+	if (descrtypo == "regular") {  	 $("#description").css("font-style", "normal"); }
+	if (descrtypo == "italic") {  	 $("#description").css("font-style", "italic"); }	
+}
+</script>
+
+<select id="descrselectcol" onchange="descrcolor()">
+<option  value="red">txt red</option>
+<option value="black">txt black</option>
+<option  value="yellow">txt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+<script>
+function descrcolor(){
+	
+	var descolor = document.getElementById("descrselectcol").value;
+	console.log("io");
+	
+	if (descolor == "black") {  	 $("#description").css("color", "black"); }
+	if (descolor == "red") {  	 $("#description").css("color", "red"); }
+	if (descolor == "yellow") {  	 $("#description").css("color", "yellow"); }
+	if (descolor == "white") {  	 $("#description").css("color", "white"); }
+	
+}
+
+</script>
+
+<select id="descrselectbg" onchange="descrbackground()">
+<option  value="red">bgtxt red</option>
+<option value="black">bgtxt black</option>
+<option  value="yellow">bgtxt yellow</option>
+<option value="white">bgtxt white</option>
+</select>
+</div>
+
+<script>
+function descrbackground(){
+	
+	var desbgcolor = document.getElementById("descrselectbg").value;
+	console.log("io");
+	
+	if (desbgcolor == "black") {  	 $("#description").css("background-color", "black"); }
+	if (desbgcolor == "red") {  	 $("#description").css("background-color", "red"); }
+	if (desbgcolor == "yellow") {  	 $("#description").css("background-color", "yellow"); }
+	if (desbgcolor == "white") {  	 $("#description").css("background-color", "white"); }
+	
+}
+
+</script>
+
+<div id="controlparticipants">
+<p>participants</p>
+
+<select id="participselect" onchange="participstyle()">
+<option  value="regular">regular</option>
+<option value="bold">bold</option>
+<option  value="italic">italic</option>
+</select>
+
+<script>
+function participstyle(){	
+	var partitypo = document.getElementById("participselect").value;
+	
+	
+	
+	if (partitypo == "bold") {  	 $("#participants").css("font-weight", "bold"); }
+	if (partitypo == "regular") {  	 $("#participants").css("font-style", "normal"); }
+	if (partitypo == "italic") {  	 $("#participants").css("font-style", "italic"); }	
+}
+</script>
+
+<select id="participselectcol" onchange="participcolor()">
+<option  value="red">txt red</option>
+<option value="black">txt black</option>
+<option  value="yellow">txt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+<script>
+function participcolor(){
+	
+	var parcolor = document.getElementById("participselectcol").value;
+	console.log("io");
+	
+	if (parcolor == "black") {  	 $("#participants").css("color", "black"); }
+	if (parcolor == "red") {  	 $("#participants").css("color", "red"); }
+	if (parcolor == "yellow") {  	 $("#participants").css("color", "yellow"); }
+	if (parcolor == "white") {  	 $("#participants").css("color", "white"); }
+	
+}
+
+</script>
+
+<select id="participselectbg" onchange="participbackground()">
+<option  value="red">bgtxt red</option>
+<option value="black">bgtxt black</option>
+<option  value="yellow">bgtxt yellow</option>
+<option value="white">bgtxt white</option>
+</select>
+
+<script>
+function participbackground(){
+	
+	var parbgcolor = document.getElementById("participselectbg").value;
+	console.log("io");
+	
+	if (parbgcolor == "black") {  	 $("#participants").css("background-color", "black"); }
+	if (parbgcolor == "red") {  	 $("#participants").css("background-color", "red"); }
+	if (desbgcolor == "yellow") {  	 $("#participants").css("background-color", "yellow"); }
+	if (parbgcolor == "white") {  	 $("#participants").css("background-color", "white"); }
+	
+}
+
+</script>
+
+</div>
+
+<div id="controlcontact">
+<p>contact/réseaux</p>
+
+<select id="contactselect" onchange="contactstyle()">
+<option  value="regular">regular</option>
+<option value="bold">bold</option>
+<option  value="italic">italic</option>
+</select>
+
+<script>
+function contactstyle(){	
+	var contacttypo = document.getElementById("contactselect").value;
+	
+	
+	
+	if (contacttypo == "bold") {  	 $("#contact").css("font-weight", "bold"); }
+	if (contacttypo == "regular") {  	 $("#contact").css("font-style", "normal"); }
+	if (contacttypo == "italic") {  	 $("#contact").css("font-style", "italic"); }	
+}
+</script>
+
+<select id="contactselectcol" onchange="contactcolor()">
+<option  value="red">txt red</option>
+<option value="black">txt black</option>
+<option  value="yellow">txt yellow</option>
+<option value="white">txt white</option>
+</select>
+
+<script>
+function contactcolor(){
+	
+	var concolor = document.getElementById("contactselectcol").value;
+	console.log("io");
+	
+	if (concolor == "black") {  	 $("#contact").css("color", "black"); }
+	if (concolor == "red") {  	 $("#contact").css("color", "red"); }
+	if (concolor == "yellow") {  	 $("#contact").css("color", "yellow"); }
+	if (concolor == "white") {  	 $("#contact").css("color", "white"); }
+	
+}
+
+</script>
+
+<select id="contactselectbg" onchange="contactbackground()">
+<option  value="red">bgtxt red</option>
+<option value="black">bgtxt black</option>
+<option  value="yellow">bgtxt yellow</option>
+<option value="white">bgtxt white</option>
+</select>
+
+<script>
+function contactbackground(){
+	
+	var conbgcolor = document.getElementById("contactselectbg").value;
+	console.log("io");
+	
+	if (conbgcolor == "black") {  	 $("#contact").css("background-color", "black"); }
+	if (conbgcolor == "red") {  	 $("#contact").css("background-color", "red"); }
+	if (conbgcolor == "yellow") {  	 $("#contact").css("background-color", "yellow"); }
+	if (conbgcolor == "white") {  	 $("#contact").css("background-color", "white"); }
+	
+}
+
+</script>
+
+</div>
+
+
+
+
+
+<script>	
+var printStyle  = $('#print');
+	
+
+
+/* interlignage 
+function showValue(newValue)
+{
+  document.getElementById("range").innerHTML=newValue;
+  $("#date").css("letter-spacing", newValue + "px");
+  printStyle.text('#titre{letter-spacing: '+ pixel+ 'px}');
+	
+}
+		
+	*/
+
+/* fonction imprimer */
+$(function() {
+  var buttons     = $('button');
+  var printStyle  = $('#print');
+  var color, style;
+
+  buttons.click(function() {
+    color = $(this).attr('class');
+    style = '#titre { color: ' + color + '};';
+	$("#texte").css("display", "none");
+	$("#controlers").css("display", "none");
+	$("#tete").css("display", "none");
+	
+	
+	      html2canvas($("#affiche"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+                document.body.appendChild(canvas);
+
+                // Convert and download as image 
+                Canvas2Image.saveAsPNG(canvas); 
+                $("#img-out").append(canvas);
+                // Clean up 
+                //document.body.removeChild(canvas);
+            }
+        });
+	
+	$("#affiche").css("display", "none");
+	
+	
+     
+  });
+});
+
+
+ /* printStyle.text(style);
+    window.print(); */
+
+	
+	
+	
+</script>
+	
+</div>	
+	
+    
+    <div id="img-out">
+<style type="text/css" media="print">
+.printbutton {
+  visibility: hidden;
+  display: none;
+}
+</style>
+<script>
+document.write("<input type='button' " +
+"onClick='window.print()' " +
+"class='printbutton' " +
+"value='Imprimer'/>");
+</script>
+
+    </div>
+				
+</body>
+</html>
